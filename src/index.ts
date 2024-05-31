@@ -13,6 +13,8 @@ window.addEventListener('DOMContentLoaded', () => {
     import('./terminal').then(({ initiate_termial }) => {
         initiate_termial();
 
-        console.log("Hello, RCLink!");
+        document.body.appendChild(Object.assign(document.createElement('script'), {
+            src: 'wasm/RCLink.js'
+        }));
     });
 });
