@@ -35,10 +35,9 @@ async function main() {
         const response = await axios.get(GITHUB_RELEASES_URL);
 
         for (const asset of response.data.assets) {
-            const file_url = asset.browser_download_url;
             const file_path = path.join(OUTPUT_DIRECTORY, asset.name);
 
-            await download_file(file_url, file_path);
+            await download_file(asset.browser_download_url, file_path);
 
             if (asset.name.endsWith('.tar.gz')) {
                 await extract_file(file_path, OUTPUT_DIRECTORY);
