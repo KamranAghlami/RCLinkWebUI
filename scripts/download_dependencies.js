@@ -36,12 +36,11 @@ async function main() {
 
         for (const asset of response.data.assets) {
             const file_url = asset.browser_download_url;
-            const file_name = path.basename(file_url);
-            const file_path = path.join(OUTPUT_DIRECTORY, file_name);
+            const file_path = path.join(OUTPUT_DIRECTORY, asset.name);
 
             await download_file(file_url, file_path);
 
-            if (file_name.endsWith('.tar.gz')) {
+            if (asset.name.endsWith('.tar.gz')) {
                 await extract_file(file_path, OUTPUT_DIRECTORY);
 
                 fs.unlinkSync(file_path);
