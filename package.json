@@ -5,9 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf dist",
-    "prebuild": "node scripts/download_dependencies.js",
+    "prebuild": "node scripts/get_wasm.js",
     "build": "webpack --mode production",
-    "prestart": "node scripts/download_dependencies.js",
+    "prestart": "node scripts/get_wasm.js",
     "start": "webpack serve --mode development"
   },
   "keywords": [],
