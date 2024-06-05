@@ -6,18 +6,6 @@ const tar = require('tar');
 const GITHUB_RELEASES_URL = `https://api.github.com/repos/KamranAghlami/RCLinkApp/releases/latest`;
 const OUTPUT_DIRECTORY = path.join(__dirname, '../public/wasm');
 
-function is_directory_empty(path) {
-    const files = fs.readdirSync(path);
-
-    if (files.length === 0)
-        return true;
-
-    if (files.length === 1 && files[0] === '.gitkeep')
-        return true;
-
-    return false;
-}
-
 async function download_file(url, output) {
     const response = await axios({
         url: url,
