@@ -44,10 +44,9 @@ async function extract_file(file_path, output_directory) {
 
 async function main() {
     try {
-        if (!fs.existsSync(OUTPUT_DIRECTORY))
+        if (!fs.existsSync(OUTPUT_DIRECTORY)) {
             fs.mkdirSync(OUTPUT_DIRECTORY);
 
-        if (is_directory_empty(OUTPUT_DIRECTORY)) {
             const response = await axios.get(GITHUB_RELEASES_URL);
 
             for (const asset of response.data.assets) {
@@ -63,7 +62,7 @@ async function main() {
             }
         }
     } catch (error) {
-        console.error('[main] error:', error.message);
+        console.error('error:', error.message);
     }
 }
 
